@@ -56,16 +56,15 @@ class Multithreaded:
         admin_id = self._json['admin_id']
         json = self._json
 
-        bot = telebot.TeleBot(token, parse_mode="MarkdownV2", threaded=False) #num_threads=10)
-        #bot.worker_pool = util.ThreadPool()
-
+        bot = telebot.TeleBot(token, parse_mode="MarkdownV2", threaded=False) 
+        
         while True:
             @bot.message_handler(commands=['start'])
             def wait_command(message):
 
                 parse_mode = '*Пожалуйста, подождите\.\.\.*⏳'
                 send = bot.send_message(message.chat.id, parse_mode)
-                
+            
                 bot.delete_message(message.chat.id, message.message_id)
                     
                 if self.check_user(id=message.from_user.id) is True:
@@ -79,9 +78,7 @@ class Multithreaded:
                 keyboard.add(url_btn)
 
                 bot.send_message(message.chat.id, parse_mode, reply_markup=keyboard) 
-
                 bot.delete_message(message.chat.id, send.id)    
-
 
             @bot.message_handler(commands=['send'])
             def mailing_command(message):
@@ -151,7 +148,6 @@ class Multithreaded:
                     text = message.caption
                     image_id = message.document.file_id
 
-
                     file_info = bot.get_file(image_id)
                     src = 'package/image.jpg'
                     download_file = bot.download_file(file_info.file_path)
@@ -178,26 +174,16 @@ class Multithreaded:
 
                     image.close()
 
-
-
-
             if self._polling == True:
                 try:
-                    bot.polling(none_stop=True) #bot.infinity_polling()
+                    bot.bot.infinity_polling() #polling(none_stop=True) #
                 except Exception as e: 
                     print(e)
                     time.sleep(5)    
 
 
 
-
-
-
     def dict_factory(self, cursor, row):
-        '''
-        Функция для формирования dict в ответ на cursor.fetchall()
-        database.row_factory = dict_factory
-        '''
         d = {}
         for idx, col in enumerate(cursor.description):
             d[col[0]] = row[idx]

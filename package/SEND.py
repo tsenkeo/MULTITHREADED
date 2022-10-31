@@ -8,11 +8,6 @@ import time
 from colorama import Fore
 
 
-
-
-
-
-
 class Sending_messages_to_users:
     def __init__(self,
         json, 
@@ -46,21 +41,12 @@ class Sending_messages_to_users:
                 sending = Thread(target=self.send, args=(token, True), daemon=True).start()
                 time.sleep(2)
 
-        
-        
-        
-        
-        
-
-
 
     def send(self, token, with_image: bool = False):
 
         delivered: 'сколько доставлено сообщений' = 0
 
         bot = telebot.TeleBot(token, parse_mode="MarkdownV2")
-
-        
 
         for i in range(0, len(self._list_id)):
             try:
