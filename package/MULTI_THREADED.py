@@ -21,13 +21,13 @@ def today():
 
 class Multithreaded:
 
-    def __init__(self, polling: bool = False):
+    def __init__(self, json_path: 'путь до json', polling: bool = False):
 
         print(Fore.RED + f'Привет! Чтобы изменить настройки ботов-прокладок'\
             ' (например, добавить или удалить бот, изменить администратора, ссылку куда пользователям переходить)'\
             ' отредактируй файл config.json')
 
-        self._json = json.load(open('config.json', 'r', encoding='utf-8'))
+        self._json = json.load(open(json_path, 'r', encoding='utf-8'))
         self._polling = polling
 
         if __name__ != '__main__':

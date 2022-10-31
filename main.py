@@ -3,4 +3,4 @@
 
 import package
 
-package.Multithreaded(polling = True)
+package.Multithreaded(json_path='config.json', polling = True)
