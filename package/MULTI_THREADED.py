@@ -119,7 +119,7 @@ class Multithreaded:
                 if call.data == 'send_mailing':
                     if call.message.photo:
                         text = call.message.caption                   
-                        src = 'package/.images/image.jpg'
+                        src = 'package/image.jpg'
                         bot.delete_message(call.message.chat.id, message_id=call.message.message_id)
                         Sending_messages_to_users(json=json, text=text, database=db, src_image=src)
     
@@ -132,7 +132,7 @@ class Multithreaded:
                 elif call.data == 'send_to_myself':
                     if call.message.photo:
                         text = call.message.caption                   
-                        src = 'package/.images/image.jpg'
+                        src = 'package/image.jpg'
                         image = open(src, 'rb')
                         bot.send_photo(chat_id=call.message.chat.id, photo=image,
                         caption=text)
@@ -153,7 +153,7 @@ class Multithreaded:
 
 
                     file_info = bot.get_file(image_id)
-                    src = 'package/.images/image.jpg'
+                    src = 'package/image.jpg'
                     download_file = bot.download_file(file_info.file_path)
                         
                     saving_in_dir = open(src, 'wb')
