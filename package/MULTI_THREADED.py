@@ -176,7 +176,7 @@ class Multithreaded:
 
             if self._polling == True:
                 try:
-                    bot.bot.infinity_polling() #polling(none_stop=True) #
+                    bot.infinity_polling() #polling(none_stop=True) #
                 except Exception as e: 
                     print(e)
                     time.sleep(5)    
