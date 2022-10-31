@@ -1,0 +1,5 @@
+.venv
+package/__pycache__
+package/BASE.db
+package/.images
+config.json
