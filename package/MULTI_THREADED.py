@@ -21,7 +21,7 @@ def today():
 
 class Multithreaded:
 
-    def __init__(self, json_path: 'путь до json', polling: bool = False):
+    def __init__(self, json_path: 'путь до json', name_bd: 'название бд', polling: bool = False):
 
         print(Fore.RED + f'Привет! Чтобы изменить настройки ботов-прокладок'\
             ' (например, добавить или удалить бот, изменить администратора, ссылку куда пользователям переходить)'\
@@ -32,7 +32,7 @@ class Multithreaded:
 
         if __name__ != '__main__':
             global db
-            with sqlite3.connect('package/BASE.db', check_same_thread=False) as database:
+            with sqlite3.connect(name_db, check_same_thread=False) as database:
                 database.row_factory = self.dict_factory 
                 db = database
                 self.create_database(database)
@@ -185,7 +185,7 @@ class Multithreaded:
                 try:
                     bot.infinity_polling() #polling(none_stop=True) #
                 except Exception as e: 
-                    print(e)
+                    print(f'бот не работает, токен:\n{token}')
                     time.sleep(5)    
 
 
