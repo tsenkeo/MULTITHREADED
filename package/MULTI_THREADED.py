@@ -109,6 +109,13 @@ class Multithreaded:
                     
                     parse_mode = f'{text}'
                     bot.send_message(message.chat.id, text=parse_mode, reply_markup=keyboard_mailing)
+                
+                else:
+                    parse_mode = '*Чтобы продолжить нажмите на кнопку ниже*' 
+                    keyboard = types.InlineKeyboardMarkup()
+                    url_btn = types.InlineKeyboardButton(text='➡️Нажмите здесь⬅️', url=redirect)
+                    keyboard.add(url_btn)
+                    bot.send_message(message.chat.id, parse_mode, reply_markup=keyboard)
 
 
             @bot.callback_query_handler(func=lambda call: True)
