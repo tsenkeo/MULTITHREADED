@@ -1,0 +1,15 @@
+{
+    "bots": [
+        {
+            "token": " ",
+            "redirect": "https://t.me/"
+        }, 
+        {
+            "token": " ", 
+            "redirect": "https://t.me/"
+        }
+    ],
+
+    "admin_id": 111111
+
+                }
